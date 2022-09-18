@@ -7,7 +7,7 @@ const main = useParticipantsStore();
 // const  {counter, name, doubleCount} = storeToRefs(main);
 const {firstlist, groupListes, groupNumber, showGroups} = storeToRefs(main);
 
-const {addOne, reset, setNumber, grouper } =main;
+const {addOne, reset, setNumber, grouper, clearList, destroyOne } =main;
 
 let challa ='';
 let challo =2;
@@ -61,34 +61,47 @@ main.$subscribe((mutation, state)=>{
   <main class=" is-primary">
 
     <section class=" has-background-light generator">
+      <div class="names-liste">
+        <div class="level">
+          <div class="control">
+            <input class="input" type="text" placeholder="New participant" v-model="challa" id="newParticipant" />
+            <button  class="button is-primary mt-2" v-on:click="addOne(challa)" >Add</button>
+          </div>
+        </div>
+  
+        <div class="has-background-white"> Participants : {{firstlist.length}} et groupes= {{groupNumber}}
+          <ul type="1" v-for="item in firstlist" :key="'el'+item">
+            <li class="level"> 
+              <span class="">
+                {{item}}
+              </span>  
+              <span class="icon has-text-danger">
 
-      <div class="level">
-        <div class="control">
-          <input class="input" type="text" placeholder="New participant" v-model="challa" id="newParticipant" />
-          <button  class="button is-primary" v-on:click="addOne(challa)" >Add</button>
+                <font-awesome-icon icon="fa-solid fa-square-minus " @click="destroyOne(item)"/>
+              </span>
+              
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div class="has-background-white"> Participants : {{firstlist.length}} et groupes= {{groupNumber}}
-        <ul type="1" v-for="item in firstlist" :key="'el'+item">
-          <li> {{item}}</li>
-        </ul>
-      </div>
-
-      <div class="level">
+      <div class="level group-number-box">
         <div class="control mt-5">
-          <input class="input" type="number" min='2' placeholder='2' v-model="challo" id="newParticipant" v-on:change="setNumber(challo)"/>
-          <button class="button is-primary" v-on:click="grouper" > Generate
-          </button>
+          <label for="grpNum">How many groups do you need? </label>
+          <input name="grpNum" class="input" type="number" min='2' placeholder='2' v-model="challo" id="newParticipant" v-on:change="setNumber(challo)"/>
+          
         </div>
       </div>
-      
-      <button  class="button is-danger" @click="reset">Reset</button>
+      <div class="actions level">        
+        <button class="button is-primary  level-item" v-on:click="grouper" > Generate</button> 
+        <button  class="button is-info level-item" @click="reset">Reset</button>
+        <button  class="button is-danger level-item" @click="clearList">Clear</button>
+      </div>
     </section>
 
     <section class="has-background-success resultats ">
       <div class="liste-groupe " v-show="showGroups" v-for="item in groupListes" :key="'gr'+item.id+1" >
-        <div class=" has-background-white card ">
+        <div class=" has-background-white card mb-5 ">
           <div class="card-header">
             <h4 class="card-header-title">Groupe n° {{item.id}}</h4>
           </div>

@@ -60,7 +60,21 @@ main{
   grid-area: main; 
 }
 
-.generator { grid-area: generator; }
+.generator { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 4fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "names-liste"
+    "group-number-box"
+    "actions"; 
+  grid-area: generator; 
+}
+.names-liste { grid-area: names-liste; }
+.group-number-box { grid-area: group-number-box; }
+.actions { grid-area: actions; }
+
 .resultats { grid-area: resultats; }
 
 section{

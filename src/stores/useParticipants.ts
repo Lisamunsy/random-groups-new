@@ -21,11 +21,22 @@ export const useParticipantsStore = defineStore("main", {
                 this.backupList.push(nom);
             }
         },
+        destroyOne(nom: string){
+           const toDe = this.firstlist.findIndex(elo=> elo===nom) ;
+           this.firstlist.splice(toDe,1)
+
+        },
         reset(){
             this.firstlist=JSON.parse(JSON.stringify(this.backupList));
             this.groupNumber = 2;
             this.groupListes = [];
             this.showGroups =false;
+        },
+        clearList(){
+            this.firstlist= [];
+            this.backupList=[];
+            this.groupListes=[];
+            this.showGroups= false;
         },
         setNumber(num: number){
             if (num >= 2) {
@@ -69,7 +80,7 @@ export const useParticipantsStore = defineStore("main", {
                          this.groupListes[j].liste.push(this.firstlist[0])
                          this.firstlist.splice(0,1);
                      }
-                 }   
+                 }    
             }
             
         }
