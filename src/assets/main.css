@@ -1,0 +1,69 @@
+@import "./base.css";
+
+#app {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+  font-weight: normal;
+  /* display: flex;
+  flex-direction: column; */
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  /* margin: 0!important;
+  display: flex;
+  place-items: center; */
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+main{
+  height: 100%;
+  width: 100%;
+  /* display: flex; */
+}
+section{
+ height: 100%;
+  margin: 0!important;
+  padding: 2rem!important;
+}
+
+
+
+@media (hover: hover) {
+
+}
+
+@media (min-width: 1024px) {
+
+
+  #app {
+    display: grid; 
+    grid-template-columns: 2.6fr 1.4fr 1fr; 
+    grid-template-rows: 0.3fr 2.2fr 1.5fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "navbar navbar navbar"
+      "main main main"
+      "main main main";
+  }
+  nav { grid-area: navbar; }
+  main {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "generator resultats"; 
+    grid-area: main; 
+  }
+  .generator { grid-area: generator; }
+  .resultats { grid-area: resultats; }
+}
