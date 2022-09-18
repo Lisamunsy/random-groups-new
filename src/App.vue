@@ -44,11 +44,11 @@ main.$subscribe((mutation, state)=>{
 
 <template>
   <nav class="navbar has-background-link " >
-    <div class=" level">
+    <div class="nav-content">
 
       <img
-        alt="Vue logo"
-        class="logo mr-5 level-item"
+        alt="logo"
+        class="logo "
         src="./assets/logo.svg"
         width="40"
         height="40"
@@ -69,7 +69,7 @@ main.$subscribe((mutation, state)=>{
         </div>
       </div>
 
-      <div class="has-background-warning"> Participants : {{firstlist.length}} et groupes= {{groupNumber}}
+      <div class="has-background-white"> Participants : {{firstlist.length}} et groupes= {{groupNumber}}
         <ul type="1" v-for="item in firstlist" :key="'el'+item">
           <li> {{item}}</li>
         </ul>
@@ -87,12 +87,16 @@ main.$subscribe((mutation, state)=>{
     </section>
 
     <section class="has-background-success resultats ">
-      <div class="liste-groupe" v-show="showGroups" v-for="item in groupListes" :key="'gr'+item.id+1" >
-        <div class=" has-background-warning">
-          <h4>Groupe n° {{item.id}}</h4>
-          <ul v-for="membre in item.liste " :key="'pers'+membre">
-            <li>{{membre}}</li>
-          </ul>
+      <div class="liste-groupe " v-show="showGroups" v-for="item in groupListes" :key="'gr'+item.id+1" >
+        <div class=" has-background-white card ">
+          <div class="card-header">
+            <h4 class="card-header-title">Groupe n° {{item.id}}</h4>
+          </div>
+          <div class="card-content">
+            <ul v-for="membre in item.liste " :key="'pers'+membre">
+              <li>{{membre}}</li>
+            </ul>
+          </div>
         </div>
       </div> 
     </section>
@@ -101,9 +105,7 @@ main.$subscribe((mutation, state)=>{
 </template>
 
 <style scoped>
-.logo {
-  margin: 0 auto;
-}
+
 
 @media (min-width: 1024px) {
   /* header {

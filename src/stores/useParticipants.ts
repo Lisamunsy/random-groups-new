@@ -33,8 +33,9 @@ export const useParticipantsStore = defineStore("main", {
             }
         },
         grouper(){
-            this.showGroups =true;
+           
             if (this.firstlist.length>=this.groupNumber) {
+                this.showGroups =true;
                 
                 const lefties= (this.firstlist.length)%(this.groupNumber);
                 const fullies=(this.firstlist.length - lefties)/(this.groupNumber)

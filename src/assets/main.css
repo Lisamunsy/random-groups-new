@@ -1,14 +1,5 @@
 @import "./base.css";
 
-#app {
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  box-sizing: border-box;
-  font-weight: normal;
-  /* display: flex;
-  flex-direction: column; */
-}
 body {
   width: 100vw;
   height: 100vh;
@@ -24,13 +15,56 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0!important;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: normal;
+  display: grid; 
+  grid-template-columns: 2.6fr 1.4fr 1fr; 
+  grid-template-rows: 0.15fr 2.25fr 1.6fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "navbar navbar navbar"
+    "main main main"
+    "main main main";
+}
+
+
+nav { grid-area: navbar; 
+display: flex;}
+
+.nav-content{
+  display: flex;
+  width: 90%;
+  justify-content: flex-start;
+  align-items: center;
+}
+.logo {
+  margin: 0 1rem ;
+}
+
 main{
   height: 100%;
   width: 100%;
-  /* display: flex; */
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "generator"
+    "resultats"; 
+  grid-area: main; 
 }
+
+.generator { grid-area: generator; }
+.resultats { grid-area: resultats; }
+
 section{
- height: 100%;
+ height: 100vh;
   margin: 0!important;
   padding: 2rem!important;
 }
@@ -42,28 +76,18 @@ section{
 }
 
 @media (min-width: 1024px) {
+#app{
+  height: 100vh;
+}
+section{
+  height: 100%;
+}
+  main{
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  grid-template-areas: 
+  "generator resultats"; 
+  }
 
 
-  #app {
-    display: grid; 
-    grid-template-columns: 2.6fr 1.4fr 1fr; 
-    grid-template-rows: 0.3fr 2.2fr 1.5fr; 
-    gap: 0px 0px; 
-    grid-template-areas: 
-      "navbar navbar navbar"
-      "main main main"
-      "main main main";
-  }
-  nav { grid-area: navbar; }
-  main {
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr; 
-    gap: 0px 0px; 
-    grid-template-areas: 
-      "generator resultats"; 
-    grid-area: main; 
-  }
-  .generator { grid-area: generator; }
-  .resultats { grid-area: resultats; }
 }
