@@ -45,7 +45,7 @@ export const useParticipantsStore = defineStore("main", {
                         id: i+1,
                         liste: [] as string[]}
                 this.groupListes.push(newGroupe)
-                console.log("Listes faites");
+                // console.log("Listes faites");
                 }
     
                 for (let g = 0; g < this.groupListes.length; g++) {
@@ -53,13 +53,13 @@ export const useParticipantsStore = defineStore("main", {
                         const element = [] as string[];
                         for (let j = 0; j < fullies; j++) {
                             const rand = Math.floor(Math.random() * (this.firstlist.length));
-                            console.log(rand)
+                            // console.log(rand)
                             element.push(this.firstlist[rand])
                             this.firstlist.splice(rand,1);
                         }
                         this.groupListes[g].liste = element
                     }
-                    console.log(this.firstlist.length)
+                    // console.log(this.firstlist.length)
                 }
                 for (let j = 0; j <= this.groupListes.length; j++) {
                 if(this.firstlist.length<=lefties){
