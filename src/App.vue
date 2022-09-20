@@ -1,16 +1,30 @@
 <script setup lang="ts">
 import { useParticipantsStore } from "./stores/useParticipants";
 import { storeToRefs } from "pinia";
+// import $ from 'jquery';
 
 const main = useParticipantsStore();
 
 // const  {counter, name, doubleCount} = storeToRefs(main);
-const {firstlist, groupListes, groupNumber, showGroups} = storeToRefs(main);
+const {firstlist, groupListes, showGroups} = storeToRefs(main);
 
 const {addOne, reset, setNumber, grouper, clearList, destroyOne } =main;
 
 let challa ='';
 let challo =2;
+
+// function enterAddOne() {
+
+//   $('.enter-add-one').on("keydown" ,function(event) {
+//   // enter has keyCode = 13, change it if you want to use another button
+//   if (event.key === 'Enter') {
+//     event.preventDefault();
+//     $('.button-add').trigger("click");
+//     addOne(challa);
+//   }
+// });
+
+// }
 
 // const {addOne} =mapActions(useCounterStore, ["addOne"])
 
@@ -35,10 +49,10 @@ let challo =2;
 //   }
 // }
 
-main.$subscribe((mutation, state)=>{
-  console.log("mutation", mutation);
-  console.log("state", state);
-})
+// main.$subscribe((mutation, state)=>{
+//   console.log("mutation", mutation);
+//   console.log("state", state);
+// })
 
 </script>
 
@@ -61,25 +75,24 @@ main.$subscribe((mutation, state)=>{
   <main class=" is-primary">
 
     <section class=" has-background-light generator">
+
       <div class="names-liste">
         <div class="level">
           <div class="control">
-            <input class="input" type="text" placeholder="New participant" v-model="challa" id="newParticipant" />
-            <button  class="button is-primary mt-2" v-on:click="addOne(challa)" >Add</button>
+            <input class="input enter-add-one" type="text" placeholder="New participant" v-model="challa" id="newParticipant" />
+            <button  class="button is-primary mt-2 button-add" v-on:click="addOne(challa)" >Add</button>
           </div>
         </div>
   
-        <div class="has-background-white"> Participants : {{firstlist.length}} et groupes= {{groupNumber}}
+        <div class="has-background-white">
           <ul type="1" v-for="item in firstlist" :key="'el'+item">
             <li class="level"> 
               <span class="">
                 {{item}}
               </span>  
               <span class="icon has-text-danger">
-
                 <font-awesome-icon icon="fa-solid fa-square-minus " @click="destroyOne(item)"/>
-              </span>
-              
+              </span> 
             </li>
           </ul>
         </div>
