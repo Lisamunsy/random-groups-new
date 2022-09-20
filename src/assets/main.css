@@ -7,10 +7,10 @@ body {
   display: flex;
   place-items: center; */
 }
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;
 }
-body {
+* {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
@@ -78,12 +78,20 @@ main{
 .resultats { grid-area: resultats; }
 
 section{
+
  height: 100vh;
   margin: 0!important;
   padding: 2rem!important;
 }
 
+.liste-groupe{ 
+  min-width: 200px;
+  max-width: fit-content;
+}
 
+.liste-groupe .card{
+  width: 100%;
+}
 
 @media (hover: hover) {
 
@@ -94,7 +102,9 @@ section{
   height: 100vh;
 }
 section{
+  min-height: 100%;
   height: 100%;
+  overflow-y: scroll;
 }
   main{
   grid-template-columns: 1fr 1fr; 

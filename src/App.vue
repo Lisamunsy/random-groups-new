@@ -77,11 +77,9 @@ let challo =2;
     <section class=" has-background-light generator">
 
       <div class="names-liste">
-        <div class="level">
-          <div class="control">
-            <input class="input enter-add-one" type="text" placeholder="New participant" v-model="challa" id="newParticipant" />
-            <button  class="button is-primary mt-2 button-add" v-on:click="addOne(challa)" >Add</button>
-          </div>
+        <div class="control level">
+          <input class="input enter-add-one" type="text" placeholder="New participant" v-model="challa" id="newParticipant" />
+          <button  class="button is-primary button-add " v-on:click="addOne(challa)" >Add</button>
         </div>
   
         <div class="has-background-white">
@@ -107,18 +105,18 @@ let challo =2;
       </div>
       <div class="actions level">        
         <button class="button is-primary  level-item" v-on:click="grouper" > Generate</button> 
-        <button  class="button is-info level-item" @click="reset">Reset</button>
+        <button  class="button is-link level-item" @click="reset">Reset</button>
         <button  class="button is-danger level-item" @click="clearList">Clear</button>
       </div>
     </section>
 
-    <section class="has-background-success resultats ">
-      <div class="liste-groupe " v-show="showGroups" v-for="item in groupListes" :key="'gr'+item.id+1" >
-        <div class=" has-background-white card mb-5 ">
+    <section class="has-background-success resultats is-flex is-direction-row is-justify-content-space-evenly is-flex-wrap-wrap">
+      <div class="liste-groupe  " v-show="showGroups" v-for="item in groupListes" :key="'gr'+item.id+1" >
+        <div class=" has-background-white card mb-5">
           <div class="card-header">
-            <h4 class="card-header-title">Groupe n° {{item.id}}</h4>
+            <h4 class="card-header-title has-background-link has-text-white ">Groupe n° {{item.id}}</h4>
           </div>
-          <div class="card-content">
+          <div class="card-content p-2">
             <ul v-for="membre in item.liste " :key="'pers'+membre">
               <li>{{membre}}</li>
             </ul>

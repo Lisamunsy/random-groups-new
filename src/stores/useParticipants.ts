@@ -23,12 +23,14 @@ export const useParticipantsStore = defineStore("main", {
         },
         destroyOne(nom: string){
            const toDe = this.firstlist.findIndex(elo=> elo===nom) ;
+           const toDeBack = this.backupList.findIndex(elo=> elo===nom) ;
+           
            this.firstlist.splice(toDe,1)
+           this.backupList.splice(toDeBack,1)
 
         },
         reset(){
             this.firstlist=JSON.parse(JSON.stringify(this.backupList));
-            this.groupNumber = 2;
             this.groupListes = [];
             this.showGroups =false;
         },
